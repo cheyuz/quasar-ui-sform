@@ -1,18 +1,21 @@
 <template>
   <q-page padding>
-    <s-form ref="form" title="Add Talent" :inputs="inputs" v-model="data" outlined @submit="save"/>
+    <s-form ref="form" title="Add Talent" :inputs="inputs" v-model="data" outlined @submit="save" horizontal/>
+    <s-date label="Tanggal" v-model="data.tanggal" />
   </q-page>
 </template>
 
 <script>
 import SForm from "../../../src/components/SForm";
+import {SDate} from "../../../src/vue-plugin";
 import {ref} from "vue";
 import axios from "axios";
 
 export default {
   name: "Test2",
   components: {
-    SForm
+    SForm,
+    SDate
   },
   setup() {
     const form = ref(null);
@@ -20,6 +23,7 @@ export default {
       nama_asli: "",
       nama_panggilan: "",
       alamat1: "",
+      tanggal: "",
     });
     const inputs = ref([
       {
@@ -43,6 +47,11 @@ export default {
         field: 'alamat1',
         type: 'text',
         icon: 'home'
+      },
+      {
+        label: 'Tanggal',
+        field: 'tanggal',
+        type: 'date',
       }
     ]);
     const save = () => {

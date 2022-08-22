@@ -1,6 +1,6 @@
 {
   "name": "quasar-app-extension-sform",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "description": "Simple Form",
   "author": "Cecep Yusuf <cheyuz@gmail.com>",
   "license": "MIT",
@@ -12,7 +12,7 @@
   "bugs": "",
   "homepage": "",
   "dependencies": {
-    "quasar-ui-sform": "^0.0.1"
+    "quasar-ui-sform": "^0.0.4"
   },
   "engines": {
     "node": ">= 8.9.0",

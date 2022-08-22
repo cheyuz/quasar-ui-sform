@@ -17,11 +17,14 @@
     <q-option-group v-if="input.type === 'option-group'" v-model="model[input.field]" :label="input.label"
                     :dense="dense" :rules="input.rules" :options="input.options" :error="input.error"
                     :error-message="input.errorMessage"/>
+    <s-date v-if="input.type === 'date'" v-model="model[input.field]" :label="input.label"
+            :outlined="outlined" :filled="filled" :error="input.error" :error-message="input.errorMessage"
+            :icon="input.icon" :dense="dense" :rules="input.rules"/>
   </template>
   <template v-else v-for="input in inputs">
     <q-item>
       <q-item-section class="col-md-3">
-        <q-item-label v-if="input.type==='text' || !input.type || input.type==='select' || input.type==='option-group'">
+        <q-item-label v-if="input.type==='text' || !input.type || input.type==='select' || input.type==='date'">
           {{ input.label }}
         </q-item-label>
       </q-item-section>
@@ -45,6 +48,9 @@
         <q-option-group v-if="input.type === 'option-group'" v-model="model[input.field]" :label="input.label"
                         :dense="dense" :rules="input.rules" :options="input.options" :error="input.error"
                         :error-message="input.errorMessage"/>
+        <s-date v-if="input.type === 'date'" v-model="model[input.field]"
+                :outlined="outlined" :filled="filled" :error="input.error" :error-message="input.errorMessage"
+                :icon="input.icon" :dense="dense" :rules="input.rules"/>
       </q-item-section>
     </q-item>
   </template>
@@ -54,10 +60,11 @@
 import {computed} from "vue";
 import SSelect from "./SSelect";
 import SInput from "./SInput";
+import SDate from "./SDate";
 
 export default {
   name: "SInputs",
-  components: {SInput, SSelect},
+  components: {SDate, SInput, SSelect},
   props: {
     inputs: {
       type: Array,
