@@ -1,13 +1,16 @@
 <template>
   <q-page padding>
     <s-form ref="form" title="Add Talent" :inputs="inputs" v-model="data" outlined @submit="save" horizontal/>
-    <s-date label="Tanggal" v-model="data.tanggal" />
+    <div class="q-gutter-md">
+      <s-date label="Tanggal" v-model="data.tanggal"/>
+      <s-date label="Periode" v-model="data.periode" range/>
+    </div>
   </q-page>
 </template>
 
 <script>
 import SForm from "../../../src/components/SForm";
-import {SDate} from "../../../src/vue-plugin";
+import {SDate, SRange} from "../../../src/vue-plugin";
 import {ref} from "vue";
 import axios from "axios";
 
@@ -15,7 +18,8 @@ export default {
   name: "Test2",
   components: {
     SForm,
-    SDate
+    SDate,
+    SRange,
   },
   setup() {
     const form = ref(null);
@@ -24,6 +28,10 @@ export default {
       nama_panggilan: "",
       alamat1: "",
       tanggal: "",
+      periode: {
+        from: null,
+        to: null,
+      }
     });
     const inputs = ref([
       {
@@ -52,6 +60,7 @@ export default {
         label: 'Tanggal',
         field: 'tanggal',
         type: 'date',
+        range: true,
       }
     ]);
     const save = () => {
@@ -60,9 +69,9 @@ export default {
           console.log(res);
         })
         .catch(err => {
-          form.value.validateFromServer(err.response.data.data);
-        }
-      );
+            form.value.validateFromServer(err.response.data.data);
+          }
+        );
     }
 
     return {

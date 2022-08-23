@@ -19,7 +19,7 @@
                     :error-message="input.errorMessage"/>
     <s-date v-if="input.type === 'date'" v-model="model[input.field]" :label="input.label"
             :outlined="outlined" :filled="filled" :error="input.error" :error-message="input.errorMessage"
-            :icon="input.icon" :dense="dense" :rules="input.rules"/>
+            :icon="input.icon" :dense="dense" :rules="input.rules" :range="input.range"/>
   </template>
   <template v-else v-for="input in inputs">
     <q-item>
@@ -50,7 +50,7 @@
                         :error-message="input.errorMessage"/>
         <s-date v-if="input.type === 'date'" v-model="model[input.field]"
                 :outlined="outlined" :filled="filled" :error="input.error" :error-message="input.errorMessage"
-                :icon="input.icon" :dense="dense" :rules="input.rules"/>
+                :icon="input.icon" :dense="dense" :rules="input.rules" :range="input.range"/>
       </q-item-section>
     </q-item>
   </template>

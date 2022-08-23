@@ -8,7 +8,8 @@
       <q-separator />
       <q-card-section>
         <div :class="'q-gutter-'+ gutter">
-          <s-inputs :inputs="inputs" v-model="model" :dense="dense" :outlined="outlined" :filled="filled" :horizontal="horizontal" />
+          <s-inputs v-if="inputs" :inputs="inputs" v-model="model" :dense="dense" :outlined="outlined" :filled="filled" :horizontal="horizontal" />
+          <slot />
         </div>
       </q-card-section>
       <q-separator />
